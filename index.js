@@ -180,16 +180,25 @@ const RadioBrowser = module.exports = {
     },
 
     /**
+     * returns a list of category.
+     * 
+     * @param {string} category <countries|codecs|states|languages|tags>
+     * @param {object} filter {country: <string>, searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
+     * @returns {promise}
+     */
+    getCategory: (category, filter) => {
+        let {route, params} = parseFilter(category, filter)
+        return queryApi(route, filter)
+    },
+
+    /**
      * Get a list of countries
      * http://www.radio-browser.info/webservice#List_of_countries
      * 
      * @param {object} filter {searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
-     * @returns {promise}
+     * @returns {promise} 
      */
-    getCountries: (filter) => {
-        let {route, params} = parseFilter('countries', filter)
-        return queryApi(route, params)
-    },
+    getCountries: (filter) => RadioBrowser.getCategory('countries', filter),
 
     /**
      * get a list of codecs
@@ -198,10 +207,7 @@ const RadioBrowser = module.exports = {
      * @param {object} filter {searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
      * @returns {promise}
      */
-    getCodecs: (filter) => {
-        let {route, params} = parseFilter('codecs', filter)
-        return queryApi(route, params)
-    },
+    getCodecs: (filter) => RadioBrowser.getCategory('codecs', filter),
 
     /**
      * Get a list of states
@@ -214,10 +220,7 @@ const RadioBrowser = module.exports = {
      * @param {object} filter {country: <string>, searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
      * @returns {promise}
      */
-    getStates: (filter) => {
-        let {route, params} = parseFilter('states', filter)
-        return queryApi(route, params)
-    },
+    getStates: (filter) => RadioBrowser.getCategory('states', filter),
 
     /**
      * get a list of languages
@@ -226,10 +229,7 @@ const RadioBrowser = module.exports = {
      * @param {object} filter {searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
      * @returns {promise}
      */
-    getLanguages: (filter) => {
-        let {route, params} = parseFilter('languages', filter)
-        return queryApi(route, params)
-    },
+    getLanguages: (filter) => RadioBrowser.getCategory('languages', filter),
 
     /**
      * get list of tags
@@ -238,10 +238,7 @@ const RadioBrowser = module.exports = {
      * @param {object} filter {searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
      * @returns {promise}
      */
-    getTags: (filter) => {
-        let {route, params} = parseFilter('tags', filter)
-        return queryApi(route, params)
-    },
+    getTags: (filter) => RadioBrowser.getCategory('tags', filter),
 
     /**
      * List of radio stations
