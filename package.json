@@ -1,0 +1,29 @@
+{
+  "name": "radio-browser",
+  "version": "0.1.0",
+  "description": "nodejs module for radio-browser API (http://www.radio-browser.info/webservice)",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/nepodev/radio-browser.git"
+  },
+  "keywords": [
+    "webradio",
+    "radiobrower",
+    "api",
+    "javascript"
+  ],
+  "author": "nepodev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/nepodev/radio-browser/issues"
+  },
+  "homepage": "https://gitlab.com/nepodev/radio-browser#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
