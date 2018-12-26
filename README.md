@@ -2,6 +2,12 @@
 
 Nodejs module for [Radio-browser API](http://www.radio-browser.info/webservice)
 
+## Install
+
+```bash
+$ npm install radio-browser
+```
+
 ## Usage
 
 Every method returns a promise so you have to use `then` and `catch`.
@@ -12,7 +18,7 @@ const RadioBrowser = requier('radio-browser')
 let filter = {
     limit: 5,          // list max 5 items
     by: 'bytag',       // search in tag
-    searchterm: 'jazz' // tem in tag
+    searchterm: 'jazz' // term in tag
 }
 RadioBrowser.getStations(filter)
     .then(data => console.log(data))
