@@ -19,7 +19,7 @@ describe('#RadioBrowser.getServerStats()', function() {
 describe('#RadioBrowser lists', function() {
 
     it('should return all languages', () => {
-        return RadioBrowser.getLanguages().then(data => {
+        return RadioBrowser.getCategory('languages').then(data => {
             //expect(data.length).to.be.above(0)
             expect(data.length).to.equal(parseInt(serverStats.languages))
             expect(data[0]).to.contain.keys('stationcount')
@@ -30,7 +30,7 @@ describe('#RadioBrowser lists', function() {
         let filter = {
             searchterm: 'ber'
         }
-        return RadioBrowser.getCountries(filter).then(data => {
+        return RadioBrowser.getCategory('countries', filter).then(data => {
             expect(data.length).to.be.above(0)
             expect(data[0]).to.contain.keys('stationcount')
 
