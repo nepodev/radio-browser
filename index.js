@@ -318,7 +318,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * undelete a station by staionid
-     * http://www.radio-browser.info/webservice#Delete_a_station
+     * http://www.radio-browser.info/webservice#UnDelete_a_station
      * 
      * @param {number} stationid 
      */

@@ -13,7 +13,7 @@ $ npm install radio-browser
 Every method returns a promise so you have to use `then` and `catch`.
 
 ```js
-const RadioBrowser = requier('radio-browser')
+const RadioBrowser = require('radio-browser')
 
 let filter = {
     limit: 5,          // list max 5 items
@@ -35,7 +35,7 @@ RadioBrowser.getStations(filter)
 * `getStations([filter])` [List of radio stations](http://www.radio-browser.info/webservice#List_of_radio_stations), Stations by [clicks](http://www.radio-browser.info/webservice#Stations_by_clicks), [Url](http://www.radio-browser.info/webservice#Search_radio_stations_by_url),  [vote](http://www.radio-browser.info/webservice#Stations_by_votes), [recent click](http://www.radio-browser.info/webservice#Stations_by_recent_click), [recent changed](http://www.radio-browser.info/webservice#Stations_by_recently_changed), [deleted](http://www.radio-browser.info/webservice#Stations_that_got_deleted)
 * `searchStations([params])` [Advanced station search](http://www.radio-browser.info/webservice#Advanced_station_search)
 * `setService(<options>)` Set api host and base_path. Default is www.radio-browser.info
-* `undeleteStation(<stationid>)` [Delete a station](http://www.radio-browser.info/webservice#Delete_a_station)
+* `undeleteStation(<stationid>)` [UnDelete a station](http://www.radio-browser.info/webservice#UnDelete_a_station)
 * `voteStation(<stationid>)` [Vote for station](http://www.radio-browser.info/webservice#Vote_for_station)
 
 ### Examples:
