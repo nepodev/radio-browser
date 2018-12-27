@@ -181,6 +181,11 @@ const RadioBrowser = module.exports = {
 
     /**
      * returns a list of category.
+     * http://www.radio-browser.info/webservice#List_of_countries
+     * http://www.radio-browser.info/webservice#List_of_codecs
+     * http://www.radio-browser.info/webservice#List_of_languages
+     * http://www.radio-browser.info/webservice#List_of_states
+     * http://www.radio-browser.info/webservice#List_of_tags
      * 
      * @param {string} category <countries|codecs|states|languages|tags>
      * @param {object} filter {country: <string>, searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
@@ -193,8 +198,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * Get a list of countries
-     * http://www.radio-browser.info/webservice#List_of_countries
-     * 
+     * @deprecated use getCategory('countries', filter)
      * @param {object} filter {searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
      * @returns {promise} 
      */
@@ -202,8 +206,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * get a list of codecs
-     * http://www.radio-browser.info/webservice#List_of_codecs
-     * 
+     * @deprecated use getCategory('codecs', filter)
      * @param {object} filter {searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
      * @returns {promise}
      */
@@ -211,7 +214,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * Get a list of states
-     * http://www.radio-browser.info/webservice#List_of_states
+     * @deprecated use getCategory('states', filter)
      * @example
      * let filter = {
      *  country: 'germany',
@@ -224,8 +227,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * get a list of languages
-     * http://www.radio-browser.info/webservice#List_of_languages
-     * 
+     * @deprecated use getCategory('languages', filter)
      * @param {object} filter {searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
      * @returns {promise}
      */
@@ -233,8 +235,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * get list of tags
-     * http://www.radio-browser.info/webservice#List_of_tags
-     * 
+     * @deprecated use getCategory('tags', filter)
      * @param {object} filter {searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
      * @returns {promise}
      */
