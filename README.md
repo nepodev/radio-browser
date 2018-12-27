@@ -30,14 +30,9 @@ RadioBrowser.getStations(filter)
 * `addStation(<params>)` [Add radio station](http://www.radio-browser.info/webservice#Add_radio_station)
 * `deleteStation(<stationuuid>)` [Delete a station](http://www.radio-browser.info/webservice#Delete_a_station)
 * `editStation(<stationid>, <params>)` [Edit a radio station](http://www.radio-browser.info/webservice#Edit_a_radio_station)
-* `getChecks: ([stationuuid][, seconds])` [Get a list of station check results](http://www.radio-browser.info/webservice#Get_a_list_of_station_check_results)
-* `getCodecs([filter])` [List of codecs](http://www.radio-browser.info/webservice#List_of_codecs)
-* `getCountries([filter])` [List of countries](http://www.radio-browser.info/webservice#List_of_countries)
-* `getLanguages([filter])` [List of languages](http://www.radio-browser.info/webservice#List_of_languages)
+* `getChategory(<category>[, filter])` Get a list of [station check results](http://www.radio-browser.info/webservice#Get_a_list_of_station_check_results), [codecs](http://www.radio-browser.info/webservice#List_of_codecs), [countries](http://www.radio-browser.info/webservice#List_of_countries), [languages](http://www.radio-browser.info/webservice#List_of_languages), [states](http://www.radio-browser.info/webservice#List_of_states), [tags](http://www.radio-browser.info/webservice#List_of_tags)
 * `getServerStats()` [Server stats](http://www.radio-browser.info/webservice#Server_stats)
-* `getStates([filter])` [List of states](http://www.radio-browser.info/webservice#List_of_states)
-* `getStations([filter])` [List of radio stations](http://www.radio-browser.info/webservice#List_of_radio_stations), [Stations by clicks](http://www.radio-browser.info/webservice#Stations_by_clicks), [Search station by Url](http://www.radio-browser.info/webservice#Search_radio_stations_by_url),  [Stations by vote](http://www.radio-browser.info/webservice#Stations_by_votes), [Stations by recent click](http://www.radio-browser.info/webservice#Stations_by_recent_click), [Stations by recent changed](http://www.radio-browser.info/webservice#Stations_by_recently_changed), [Stations that got deleted](http://www.radio-browser.info/webservice#Stations_that_got_deleted)
-* `getTags([filter])` [List of tags](http://www.radio-browser.info/webservice#List_of_tags)
+* `getStations([filter])` [List of radio stations](http://www.radio-browser.info/webservice#List_of_radio_stations), Stations by [clicks](http://www.radio-browser.info/webservice#Stations_by_clicks), [Url](http://www.radio-browser.info/webservice#Search_radio_stations_by_url),  [vote](http://www.radio-browser.info/webservice#Stations_by_votes), [recent click](http://www.radio-browser.info/webservice#Stations_by_recent_click), [recent changed](http://www.radio-browser.info/webservice#Stations_by_recently_changed), [deleted](http://www.radio-browser.info/webservice#Stations_that_got_deleted)
 * `searchStations([params])` [Advanced station search](http://www.radio-browser.info/webservice#Advanced_station_search)
 * `setService(<options>)` Set api host and base_path. Default is www.radio-browser.info
 * `undeleteStation(<stationid>)` [Delete a station](http://www.radio-browser.info/webservice#Delete_a_station)
@@ -53,7 +48,7 @@ let filter = {
     reverse: true,
     order: 'stationcount'
 }
-RadioBrowser.getCountries(filter)
+RadioBrowser.getCatgory('countries', filter)
     .then(data => console.log(data))
     .catch(err => console.error(err))
 ```
