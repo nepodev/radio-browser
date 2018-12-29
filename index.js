@@ -32,7 +32,8 @@ var request_options = {
     path: '/webservice/json/', // base path. will extend on request.
     method: 'POST',            // default is POST because GET request at radiobrowser-api dosen't work as espected.
     headers: {
-         'Content-Type': 'application/x-www-form-urlencoded'
+         'Content-Type': 'application/x-www-form-urlencoded',
+         'user-agent': 'nodejs radio-browser (https://gitlab.com/nepodev/radio-browser)'
     }
 }
 
