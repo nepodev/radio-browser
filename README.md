@@ -22,7 +22,7 @@ let filter = {
 }
 RadioBrowser.getStations(filter)
     .then(data => console.log(data))
-    .catch(error => console.errror(error))
+    .catch(error => console.error(error))
 ```
 
 ## Methods
