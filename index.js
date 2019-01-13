@@ -24,10 +24,33 @@ const ROUTE_KEYS = [
     'rowcount'     // 2nd
 ]
 
+const FILTER_BY = {
+    'id': 'by',
+    'uuid': 'by',
+    'name': 'by',
+    'nameexact': 'by',
+    'codec': 'by',
+    'codecexact': 'by',
+    'country': 'by',
+    'countryexact': 'by',
+    'state': 'by',
+    'stateexact': 'by',
+    'language': 'by',
+    'languageexact': 'by',
+    'tag': 'by',
+    'tagexact': 'by',
+    'url': 'by',
+    'topclick': '',
+    'topvote': '',
+    'lastclick': '',
+    'lastchange': '',
+    deleted: ''
+}
+
 /**
  * default request options can overwrite on request.
  */
-var request_options = {
+const request_options = {
     host: 'www.radio-browser.info',
     path: '/webservice/json/', // base path. will extend on request.
     method: 'POST',            // default is POST because GET request at radiobrowser-api dosen't work as espected.
@@ -259,7 +282,7 @@ const RadioBrowser = module.exports = {
      * @returns {promise}
      * @example
      * let filter = {
-     *  by: "bytag",       // will search in tags. for possible values see links above
+     *  by: "tag",         // will search in tags. for possible values see links above
      *  searchterm: "ska", // searchterm. possible values see links above
      *  order: "name",     // sort list by name
      *  limit: 5,          // returns a list of max. 5 stations
@@ -268,7 +291,17 @@ const RadioBrowser = module.exports = {
      * RadioBrowser.getStations(filter).then(...).catch(...)
      */
     getStations: (filter) => {
+
+        if (filter.by) {
+            let by = filter.by,
+                prefix = FILTER_BY[by]||'';
+            if (prefix !== '' && by.substr(0, prefix.length)) {
+                filter.by = prefix + by;
+            }
+        }
+
         let {route, params} = parseFilter('stations', filter)
+
         return queryApi(route, params)
     },
     
@@ -354,5 +387,14 @@ const RadioBrowser = module.exports = {
      * Server stats
      * http://www.radio-browser.info/webservice#Server_stats
      */
-    getServerStats: () => queryApi('stats')
+    getServerStats: () => queryApi('stats'),
+
+    /**
+     * list of types used in getStations({by: <string>})
+     * 
+     * @var {array}
+     */
+    get filter_by_types() {
+        return Object.keys(FILTER_BY);
+    }
 }
