@@ -5,7 +5,7 @@ const station = require('./station')
 
 let filter = {
     by: 'topvote', // stations by topvote,
-	rowcount: 5    // top 5 stations
+	limit: 5    // top 5 stations
 }
 
 RadioBrowser.getStations(filter)
