@@ -38,7 +38,11 @@ RadioBrowser.getStations(filter)
 * `undeleteStation(<stationid>)` [UnDelete a station](http://www.radio-browser.info/webservice#UnDelete_a_station)
 * `voteStation(<stationid>)` [Vote for station](http://www.radio-browser.info/webservice#Vote_for_station)
 
-### Examples:
+## Properties
+
+* `filter_by_types` list of types using in getStations({by: {type}, ...})
+
+## Examples:
 
 Get a list of countries with 'aus' in name and sort list by stationscount.
 
