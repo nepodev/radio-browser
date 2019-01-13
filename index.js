@@ -293,16 +293,15 @@ const RadioBrowser = module.exports = {
     getStations: (filter) => {
 
         if (filter.by) {
-            let by = filter.by,
-                prefix = FILTER_BY[by]||'';
-            if (prefix !== '' && by.substr(0, prefix.length)) {
-                filter.by = prefix + by;
+            let by = filter.by
+            if (FILTER_BY[by]) {
+                filter.by = FILTER_BY[by] + by
             }
-            
+
             if (['topclick', 'topvote', 'lastclick', 'lastchange'].indexOf(filter.by) !== -1 && filter.limit) 
             {
-                filter.rowcount = filter.limit;
-                delete filter.limit;
+                filter.rowcount = filter.limit
+                delete filter.limit
             }
         
         }
