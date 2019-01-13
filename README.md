@@ -17,7 +17,7 @@ const RadioBrowser = require('radio-browser')
 
 let filter = {
     limit: 5,          // list max 5 items
-    by: 'tag',       // search in tag
+    by: 'tag',         // search in tag
     searchterm: 'jazz' // term in tag
 }
 RadioBrowser.getStations(filter)
@@ -30,7 +30,8 @@ RadioBrowser.getStations(filter)
 * `addStation(<params>)` [Add radio station](http://www.radio-browser.info/webservice#Add_radio_station)
 * `deleteStation(<stationuuid>)` [Delete a station](http://www.radio-browser.info/webservice#Delete_a_station)
 * `editStation(<stationid>, <params>)` [Edit a radio station](http://www.radio-browser.info/webservice#Edit_a_radio_station)
-* `getCategory(<category>[, filter])` Get a list of [station check results](http://www.radio-browser.info/webservice#Get_a_list_of_station_check_results), [codecs](http://www.radio-browser.info/webservice#List_of_codecs), [countries](http://www.radio-browser.info/webservice#List_of_countries), [languages](http://www.radio-browser.info/webservice#List_of_languages), [states](http://www.radio-browser.info/webservice#List_of_states), [tags](http://www.radio-browser.info/webservice#List_of_tags)
+* `getCategory(<category>[, filter])` Get a list of [codecs](http://www.radio-browser.info/webservice#List_of_codecs), [countries](http://www.radio-browser.info/webservice#List_of_countries), [languages](http://www.radio-browser.info/webservice#List_of_languages), [states](http://www.radio-browser.info/webservice#List_of_states), [tags](http://www.radio-browser.info/webservice#List_of_tags)
+* `getChecks([stationuuid][, seconds])` [Get a list of station check results](http://www.radio-browser.info/webservice#Get_a_list_of_station_check_results)
 * `getServerStats()` [Server stats](http://www.radio-browser.info/webservice#Server_stats)
 * `getStations([filter])` [List of radio stations](http://www.radio-browser.info/webservice#List_of_radio_stations), Stations by [clicks](http://www.radio-browser.info/webservice#Stations_by_clicks), [Url](http://www.radio-browser.info/webservice#Search_radio_stations_by_url),  [vote](http://www.radio-browser.info/webservice#Stations_by_votes), [recent click](http://www.radio-browser.info/webservice#Stations_by_recent_click), [recent changed](http://www.radio-browser.info/webservice#Stations_by_recently_changed), [deleted](http://www.radio-browser.info/webservice#Stations_that_got_deleted)
 * `searchStations([params])` [Advanced station search](http://www.radio-browser.info/webservice#Advanced_station_search)
