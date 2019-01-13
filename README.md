@@ -17,7 +17,7 @@ const RadioBrowser = require('radio-browser')
 
 let filter = {
     limit: 5,          // list max 5 items
-    by: 'bytag',       // search in tag
+    by: 'tag',       // search in tag
     searchterm: 'jazz' // term in tag
 }
 RadioBrowser.getStations(filter)
@@ -64,7 +64,7 @@ Get the 5 top voted station
 ```js
 let filter = {
 	by: 'topvote', // stations by topvote
-	rowcount: 5    // top 5 stations
+	limit: 5    // top 5 stations
 }
 RadioBrowser.getStations(filter)
     .then(data => console.log(data))
