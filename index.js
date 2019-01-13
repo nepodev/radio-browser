@@ -47,6 +47,14 @@ const FILTER_BY = {
     deleted: ''
 }
 
+const CATEGORY_TYPES = [
+    'countries',
+    'codecs',
+    'states',
+    'languages',
+    'tags'
+]
+
 /**
  * default request options can overwrite on request.
  */
@@ -82,7 +90,7 @@ const queryApi = function(route, param={}, option={})
             options.headers['Content-Length'] = Buffer.byteLength(queryString)
         }
     }
-    
+
     return new Promise((resolve, reject) => {
         const req = Http.request(options, (res) => {
             const { statusCode } = res;
@@ -211,13 +219,13 @@ const RadioBrowser = module.exports = {
      * http://www.radio-browser.info/webservice#List_of_states
      * http://www.radio-browser.info/webservice#List_of_tags
      * 
-     * @param {string} category <countries|codecs|states|languages|tags>
+     * @param {string} category  <countries|codecs|states|languages|tags>
      * @param {object} filter {country: <string>, searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
      * @returns {promise}
      */
     getCategory: (category, filter) => {
         let {route, params} = parseFilter(category, filter)
-        return queryApi(route, filter)
+        return queryApi(route, params)
     },
 
     /**
@@ -278,7 +286,7 @@ const RadioBrowser = module.exports = {
      * http://www.radio-browser.info/webservice#Stations_that_need_improvement
      * http://www.radio-browser.info/webservice#Broken_stations
      * 
-     * @param {object} filter {by: <string>, searchterm: <string>, url: <string>, rowcount: <integer>, order: <string>, reverse: <boolean>, offset: <integer>, limit: <integer>}
+     * @param {object} filter {by: <string>, searchterm: <string>, url: <string>, order: <string>, reverse: <boolean>, offset: <integer>, limit: <integer>}
      * @returns {promise}
      * @example
      * let filter = {
@@ -303,7 +311,6 @@ const RadioBrowser = module.exports = {
                 filter.rowcount = filter.limit
                 delete filter.limit
             }
-        
         }
 
         let {route, params} = parseFilter('stations', filter)
@@ -402,5 +409,9 @@ const RadioBrowser = module.exports = {
      */
     get filter_by_types() {
         return Object.keys(FILTER_BY);
+    },
+
+    get category_types() {
+        return CATEGORY_TYPES.slice(0);
     }
 }
