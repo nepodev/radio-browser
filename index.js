@@ -298,7 +298,7 @@ const RadioBrowser = module.exports = {
      * }
      * RadioBrowser.getStations(filter).then(...).catch(...)
      */
-    getStations: (filter) => {
+    getStations: (filter={}) => {
 
         if (filter.by) {
             let by = filter.by
@@ -411,6 +411,11 @@ const RadioBrowser = module.exports = {
         return Object.keys(FILTER_BY);
     },
 
+    /**
+     * list of categories using in getCategory({category}[, filter])
+     * 
+     * @returns {array}
+     */
     get category_types() {
         return CATEGORY_TYPES.slice(0);
     }

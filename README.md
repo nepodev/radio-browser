@@ -41,6 +41,7 @@ RadioBrowser.getStations(filter)
 ## Properties
 
 * `filter_by_types` list of types using in getStations({by: {type}, ...})
+* `category_types` list of categories using in getCategory({type} ...)
 
 ## Examples:
 
