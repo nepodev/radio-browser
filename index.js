@@ -286,7 +286,7 @@ const RadioBrowser = module.exports = {
      * http://www.radio-browser.info/webservice#Stations_that_need_improvement
      * http://www.radio-browser.info/webservice#Broken_stations
      * 
-     * @param {object} filter {by: <string>, searchterm: <string>, url: <string>, order: <string>, reverse: <boolean>, offset: <integer>, limit: <integer>}
+     * @param {object} filter {by: <string>, searchterm: <string>, order: <string>, reverse: <boolean>, offset: <integer>, limit: <integer>}
      * @returns {promise}
      * @example
      * let filter = {
@@ -310,6 +310,10 @@ const RadioBrowser = module.exports = {
             {
                 filter.rowcount = filter.limit
                 delete filter.limit
+            }
+            else if (filter.by === 'byurl' && filter.searchterm) {
+                filter.url = filter.searchterm
+                delete filter.searchterm
             }
         }
 
