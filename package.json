@@ -1,6 +1,6 @@
 {
   "name": "radio-browser",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "nodejs module for radio-browser API (http://www.radio-browser.info/webservice)",
   "main": "index.js",
   "scripts": {
