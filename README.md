@@ -5,7 +5,7 @@ Nodejs module for [Radio-browser API](http://www.radio-browser.info/webservice)
 ## Install
 
 ```bash
-$ npm install radio-browser
+npm install radio-browser
 ```
 
 ## Usage
@@ -59,7 +59,7 @@ RadioBrowser.getCategory('countries', filter)
     .catch(err => console.error(err))
 ```
 
-Returns a Json like [this](http://www.radio-browser.info/webservice/json/countries/aus?reverse=true&order=stationcount)
+`data` looks like [this](http://www.radio-browser.info/webservice/json/countries/aus?reverse=true&order=stationcount)
 
 Get the 5 top voted station 
 
@@ -73,4 +73,4 @@ RadioBrowser.getStations(filter)
     .catch(err => console.error(err))
 ```
 
-Returns a Json like [this](http://www.radio-browser.info/webservice/json/stations/topvote/5)
+`data` looks like [this](http://www.radio-browser.info/webservice/json/stations/topvote/5)
