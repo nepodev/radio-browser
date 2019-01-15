@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/nepodev/radio-browser.git"
+    "url": "git+https://github.com/nepodev/radio-browser.git"
   },
   "keywords": [
     "webradio",
@@ -19,9 +19,9 @@
   "author": "nepodev",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/nepodev/radio-browser/issues"
+    "url": "https://github.com/nepodev/radio-browser/issues"
   },
-  "homepage": "https://gitlab.com/nepodev/radio-browser#readme",
+  "homepage": "https://github.com/nepodev/radio-browser#readme",
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^5.2.0"
