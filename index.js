@@ -49,6 +49,7 @@ const FILTER_BY = {
 
 const CATEGORY_TYPES = [
     'countries',
+    'countrycodes',
     'codecs',
     'states',
     'languages',
@@ -214,12 +215,13 @@ const RadioBrowser = module.exports = {
     /**
      * returns a list of category.
      * http://www.radio-browser.info/webservice#List_of_countries
+     * http://www.radio-browser.info/webservice#List_of_countrycodes
      * http://www.radio-browser.info/webservice#List_of_codecs
      * http://www.radio-browser.info/webservice#List_of_languages
      * http://www.radio-browser.info/webservice#List_of_states
      * http://www.radio-browser.info/webservice#List_of_tags
      * 
-     * @param {string} category  <countries|codecs|states|languages|tags>
+     * @param {string} category  <countries|countrycodes|codecs|states|languages|tags>
      * @param {object} filter {country: <string>, searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
      * @returns {promise}
      */
