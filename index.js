@@ -33,6 +33,7 @@ const FILTER_BY = {
     codecexact: 'by',
     country: 'by',
     countryexact: 'by',
+    countrycodeexact: 'by',
     state: 'by',
     stateexact: 'by',
     language: 'by',
