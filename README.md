@@ -46,21 +46,6 @@ RadioBrowser.getStations(filter)
 
 ## Examples:
 
-Get a list of tags with 'jazz' and sort list by stationscount.
-
-```js
-let filter = {
-    searchterm: 'jazz',
-    reverse: true,
-    order: 'stationcount'
-}
-RadioBrowser.getCategory('tags', filter)
-    .then(data => console.log(data))
-    .catch(err => console.error(err))
-```
-
-`data` looks like [this](http://www.radio-browser.info/webservice/json/tags/jazz?reverse=true&order=stationcount)
-
 Get the 5 top voted station 
 
 ```js
