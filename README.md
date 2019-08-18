@@ -46,20 +46,20 @@ RadioBrowser.getStations(filter)
 
 ## Examples:
 
-Get a list of countries with 'aus' in name and sort list by stationscount.
+Get a list of tags with 'jazz' and sort list by stationscount.
 
 ```js
 let filter = {
-    searchterm: 'aus',
+    searchterm: 'jazz',
     reverse: true,
     order: 'stationcount'
 }
-RadioBrowser.getCategory('countries', filter)
+RadioBrowser.getCategory('tags', filter)
     .then(data => console.log(data))
     .catch(err => console.error(err))
 ```
 
-`data` looks like [this](http://www.radio-browser.info/webservice/json/countries/aus?reverse=true&order=stationcount)
+`data` looks like [this](http://www.radio-browser.info/webservice/json/tags/jazz?reverse=true&order=stationcount)
 
 Get the 5 top voted station 
 
