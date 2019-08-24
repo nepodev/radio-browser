@@ -1,6 +1,7 @@
 'use strice'
 
-const Http = require('http');
+const Http = require('http')
+const Https = require('https')
 const Querystring = require('querystring')
 
 const PARAM_TYPES = {
@@ -81,7 +82,8 @@ const request_options = {
 const queryApi = function(route, param={}, option={})
 {
     let options = Object.assign({}, request_options, option)
-        queryString = Querystring.stringify(param)
+        queryString = Querystring.stringify(param),
+        { request } = options.protocol === 'https:' ? Https : Http
 
     options.path += route;
     if (queryString) {
@@ -94,7 +96,7 @@ const queryApi = function(route, param={}, option={})
     }
 
     return new Promise((resolve, reject) => {
-        const req = Http.request(options, (res) => {
+        const req = request(options, (res) => {
             const { statusCode } = res;
             const contentType = res.headers['content-type']
             let error;
@@ -205,10 +207,13 @@ const RadioBrowser = module.exports = {
      * 
      */
     setService: (options) => {
-        if (options.host) {
+        if (typeof options.host !== "undefined") {
             request_options.host = options.host;
         }
-        if (options.base_path) {
+        if (typeof options.protocol !== "undefined") {
+            request_options.protocol = options.protocol;
+        }
+        if (typeof options.base_path !== "undefined") {
             request_options.path = options.base_path + '/json/'
         }
     },
