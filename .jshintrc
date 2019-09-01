@@ -2,5 +2,5 @@
     "asi": true,
     "mocha": true,
     "node": true,
-    "esversion": 6
+    "esversion": 8
 }

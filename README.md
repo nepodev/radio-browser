@@ -35,7 +35,8 @@ RadioBrowser.getStations(filter)
 * `getServerStats()` [Server stats](http://www.radio-browser.info/webservice#Server_stats)
 * `getStations([filter])` [List of radio stations](http://www.radio-browser.info/webservice#List_of_radio_stations), Stations by [clicks](http://www.radio-browser.info/webservice#Stations_by_clicks), [Url](http://www.radio-browser.info/webservice#Search_radio_stations_by_url),  [vote](http://www.radio-browser.info/webservice#Stations_by_votes), [recent click](http://www.radio-browser.info/webservice#Stations_by_recent_click), [recent changed](http://www.radio-browser.info/webservice#Stations_by_recently_changed), [deleted](http://www.radio-browser.info/webservice#Stations_that_got_deleted)
 * `searchStations([params])` [Advanced station search](http://www.radio-browser.info/webservice#Advanced_station_search)
-* `setService(<options>)` Set api host and base_path. Default is www.radio-browser.info
+* ~~`setService(<options>)` Set api host and base_path. Default is www.radio-browser.info~~
+  Deprecated. Use Property `service_url`. i.e. `service_url = 'http://localhost'`
 * `undeleteStation(<stationid>)` [UnDelete a station](http://www.radio-browser.info/webservice#UnDelete_a_station)
 * `voteStation(<stationid>)` [Vote for station](http://www.radio-browser.info/webservice#Vote_for_station)
 
@@ -43,8 +44,38 @@ RadioBrowser.getStations(filter)
 
 * `filter_by_types` list of types using in getStations({by: {type}, ...})
 * `category_types` list of categories using in getCategory({type} ...)
+* `service_url` get or set the api-url. Set the property to `null` to get a random API host  `service_url = null`
 
 ## Examples:
+
+Get Server Stats from a random API-Host
+
+```js
+// file: examples/server-stats.js
+
+const RadioBrowser = require('radio-browser')
+
+// Sets the property to null. 
+// At the next request an api-host will be set automatically.
+RadioBrowser.service_url = null
+
+RadioBrowser.getServerStats()
+  .then(data => console.log(RadioBrowser.service_url, data))
+  .catch(err => console.error(err))
+```
+
+```bash
+// output
+https://de1.api.radio-browser.info/ { supported_version: 1,
+  status: 'OK',
+  stations: 24101,
+  stations_broken: 601,
+  tags: 6384,
+  clicks_last_hour: 0,
+  clicks_last_day: 5,
+  languages: 313,
+  countries: 208 }
+```
 
 Get the 5 top voted station 
 

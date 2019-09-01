@@ -1,8 +1,6 @@
 'use strice'
 
-const Http = require('http')
-const Https = require('https')
-const Querystring = require('querystring')
+const apiClient = require('./lib/api-client')
 
 const PARAM_TYPES = {
     hidebroken: 'boolean',
@@ -57,83 +55,6 @@ const CATEGORY_TYPES = [
     'languages',
     'tags'
 ]
-
-/**
- * default request options can overwrite on request.
- */
-const request_options = {
-    host: 'www.radio-browser.info',
-    path: '/webservice/json/', // base path. will extend on request.
-    method: 'POST',            // default is POST because GET request at radiobrowser-api dosen't work as expected.
-    headers: {
-         'Content-Type': 'application/x-www-form-urlencoded',
-         'user-agent': 'nodejs radio-browser (https://gitlab.com/nepodev/radio-browser)'
-    }
-}
-
-/**
- * send request to radiobrowser-api.
- * 
- * @param {string} route
- * @param {object} param
- * @param {object} option
- * @returns {promise}
- */
-const queryApi = function(route, param={}, option={})
-{
-    let options = Object.assign({}, request_options, option)
-        queryString = Querystring.stringify(param),
-        { request } = options.protocol === 'https:' ? Https : Http
-
-    options.path += route;
-    if (queryString) {
-        if (options.method === 'GET') {
-            options.path += '?' + queryString
-        }
-        else {
-            options.headers['Content-Length'] = Buffer.byteLength(queryString)
-        }
-    }
-
-    return new Promise((resolve, reject) => {
-        const req = request(options, (res) => {
-            const { statusCode } = res;
-            const contentType = res.headers['content-type']
-            let error;
-            let rawData = ''
-
-            if (statusCode !== 200) {
-                error = new Error('Request Failed.\n' + `Status Code: ${statusCode}`)
-            }
-            else if (!/^application\/json/.test(contentType)) {
-                error = new Error('Invalid content-type.\n' + `Expected application/json but received ${contentType}`)
-            }
-            if (error) {
-                res.resume()
-                reject(error)
-            }
-        
-            res.setEncoding('utf8')
-            res.on('data', (chunk) => { rawData += chunk; })
-            res.on('end', () => {
-                try {
-                    const parsedData = JSON.parse(rawData);
-                    resolve(parsedData)
-                }
-                catch (e) {
-                    reject(e)
-                }
-            });        
-        })
-
-        if (options.headers['Content-Length']) {
-            req.write(queryString)
-        }
-
-        req.on('error', (e) => reject(e))
-        req.end()
-    })
-}
 
 /**
  * extract params from filter
@@ -191,31 +112,43 @@ const parseFilter = function(route, filter={})
     }
 }
 
+/**
+ * set to old api-host
+ *
+ * @todo remove old api requests
+ */
+apiClient.service_url = 'https://www.radio-browser.info/webservice/'
+
 const RadioBrowser = module.exports = {
     
     /**
-     * set radiobrowser-api host and base_path.
-     * default host is www.radio-browser.info
-     * default base_path is /webservice
-     * 
-     * @param {object} options {host: <string>, base_path: <string>}
-     * 
-     * @example
-     * setService({
-     *  host: 'localhost' // set api-host to localhost. 
-     * })
-     * 
+     * set service host and path
+     * @deprecated use property service_url
      */
-    setService: (options) => {
-        if (typeof options.host !== "undefined") {
-            request_options.host = options.host;
+    setService: (options={}) => {
+        let url
+        if (typeof options.host !== "undefined" && options.host === null) {
+            url = null
         }
-        if (typeof options.protocol !== "undefined") {
-            request_options.protocol = options.protocol;
+        else {
+            url = [
+                options.protocol||'http:',
+                '//',
+                options.host||'www.radio-browser.info',
+                options.base_path||'/webservice'
+            ].join('')
         }
-        if (typeof options.base_path !== "undefined") {
-            request_options.path = options.base_path + '/json/'
-        }
+        apiClient.service_url = url
+    },
+
+    get service_url() 
+    {
+        return apiClient.service_url
+    },
+
+    set service_url(url)
+    {
+        apiClient.service_url = url
     },
 
     /**
@@ -233,7 +166,7 @@ const RadioBrowser = module.exports = {
      */
     getCategory: (category, filter) => {
         let {route, params} = parseFilter(category, filter)
-        return queryApi(route, params)
+        return apiClient.request(route, params)
     },
 
     /**
@@ -327,7 +260,7 @@ const RadioBrowser = module.exports = {
 
         let {route, params} = parseFilter('stations', filter)
 
-        return queryApi(route, params)
+        return apiClient.request(route, params)
     },
     
     /**
@@ -347,7 +280,7 @@ const RadioBrowser = module.exports = {
         if (seconds > 0) {
             params = {seconds: seconds}
         }
-        return queryApi(route, params)
+        return apiClient.request(route, params)
     },
 
     /**
@@ -357,7 +290,7 @@ const RadioBrowser = module.exports = {
      * @param {object} params for parameters see link above
      * @returns {promise}
      */
-    searchStations: (params) => queryApi('stations/search', params),
+    searchStations: (params) => apiClient.request('stations/search', params),
     
     /**
      * Vote for station
@@ -365,7 +298,7 @@ const RadioBrowser = module.exports = {
      * 
      * @param {number} stationid 
      */
-    voteStation: (stationid) => queryApi('vote/' + stationid),
+    voteStation: (stationid) => apiClient.request('vote/' + stationid),
 
     /**
      * delete a station by staionuuid
@@ -373,7 +306,7 @@ const RadioBrowser = module.exports = {
      * 
      * @param {string} stationuuid 
      */
-    deleteStation: stationuuid => queryApi('delete/' + encodeURI(stationuuid)),
+    deleteStation: stationuuid => apiClient.request('delete/' + encodeURI(stationuuid)),
 
     /**
      * undelete a station by staionid
@@ -381,7 +314,7 @@ const RadioBrowser = module.exports = {
      * 
      * @param {number} stationid 
      */
-    undeleteStation: (stationid) => queryApi('undelete/' + stationid),
+    undeleteStation: (stationid) => apiClient.request('undelete/' + stationid),
 
     /**
      * Revert a station
@@ -389,7 +322,7 @@ const RadioBrowser = module.exports = {
      * 
      * disabled because is broken
      */
-    // revertStation: (stationid, changeid) => queryApi('revert/' + stationid + '/' + changeid),
+    // revertStation: (stationid, changeid) => apiClient.request('revert/' + stationid + '/' + changeid),
 
     /**
      * Add radio station. 
@@ -397,7 +330,7 @@ const RadioBrowser = module.exports = {
      * 
      * @param {object} params See link above for parameters
      */
-    addStation: (params) => queryApi('add', params),
+    addStation: (params) => apiClient.request('add', params),
 
     /**
      * edit a station by stationid
@@ -406,13 +339,13 @@ const RadioBrowser = module.exports = {
      * @param {number} stationid See link above for parameters
      * @param {object} params
      */
-    editStation: (stationid, params) => queryApi('edit/' + stationid, params),
+    editStation: (stationid, params) => apiClient.request('edit/' + stationid, params),
 
     /**
      * Server stats
      * http://www.radio-browser.info/webservice#Server_stats
      */
-    getServerStats: () => queryApi('stats'),
+    getServerStats: () => apiClient.request('stats'),
 
     /**
      * list of types used in getStations({by: <string>})
