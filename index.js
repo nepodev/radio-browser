@@ -123,7 +123,7 @@ const RadioBrowser = module.exports = {
     
     /**
      * set service host and path
-     * @deprecated use propertie service_url
+     * @deprecated use property service_url
      */
     setService: (options={}) => {
         let url
