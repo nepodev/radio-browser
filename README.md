@@ -44,7 +44,7 @@ RadioBrowser.getStations(filter)
 
 * `filter_by_types` list of types using in getStations({by: {type}, ...})
 * `category_types` list of categories using in getCategory({type} ...)
-* `service_url` get or set the api-url. Set the property to `null` to get a random API host  `service_url = null`
+* `service_url` get or set the api-url. Default ist <https://www.radio-browser.info/webservice/>. Set the property to `null` to get a random API host.
 
 ## Examples:
 
