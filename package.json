@@ -24,6 +24,6 @@
   "homepage": "https://github.com/nepodev/radio-browser#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "mocha": "^7.1.1"
   }
 }
