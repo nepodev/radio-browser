@@ -45,7 +45,8 @@ const FILTER_BY = {
     topvote: '',
     lastclick: '',
     lastchange: '',
-    deleted: ''
+    improvable: '',
+    broken: ''
 }
 
 const CATEGORY_TYPES = [
@@ -241,7 +242,7 @@ const RadioBrowser = module.exports = {
                 filter.by = FILTER_BY[by] + by
             }
 
-            if (['topclick', 'topvote', 'lastclick', 'lastchange'].indexOf(filter.by) !== -1 && filter.limit) 
+            if (['broken', 'improvable', 'topclick', 'topvote', 'lastclick', 'lastchange'].indexOf(filter.by) !== -1 && filter.limit) 
             {
                 filter.rowcount = filter.limit
                 delete filter.limit
