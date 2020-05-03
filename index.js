@@ -145,12 +145,12 @@ const RadioBrowser = module.exports = {
 
     /**
      * returns a list of category.
-     * http://www.radio-browser.info/webservice#List_of_countries
-     * http://www.radio-browser.info/webservice#List_of_countrycodes
-     * http://www.radio-browser.info/webservice#List_of_codecs
-     * http://www.radio-browser.info/webservice#List_of_languages
-     * http://www.radio-browser.info/webservice#List_of_states
-     * http://www.radio-browser.info/webservice#List_of_tags
+     * https://de1.api.radio-browser.info/#List_of_countries
+     * https://de1.api.radio-browser.info/#List_of_countrycodes
+     * https://de1.api.radio-browser.info/#List_of_codecs
+     * https://de1.api.radio-browser.info/#List_of_languages
+     * https://de1.api.radio-browser.info/#List_of_states
+     * https://de1.api.radio-browser.info/#List_of_tags
      * 
      * @param {string} category  <countries|countrycodes|codecs|states|languages|tags>
      * @param {object} filter {country: <string>, searchterm: <string>, order: <string>, reverse: <boolean>, hidebroken: <boolean>}
@@ -208,16 +208,16 @@ const RadioBrowser = module.exports = {
 
     /**
      * List of radio stations
-     * http://www.radio-browser.info/webservice#List_of_radio_stations
-     * http://www.radio-browser.info/webservice#Search_radio_stations_by_url
-     * http://www.radio-browser.info/webservice#Stations_by_clicks
-     * http://www.radio-browser.info/webservice#Stations_by_votes
-     * http://www.radio-browser.info/webservice#Stations_by_recent_click
-     * http://www.radio-browser.info/webservice#Stations_by_recently_changed
-     * http://www.radio-browser.info/webservice#Stations_that_got_deleted
-     * http://www.radio-browser.info/webservice#Old_versions_of_stations
-     * http://www.radio-browser.info/webservice#Stations_that_need_improvement
-     * http://www.radio-browser.info/webservice#Broken_stations
+     * https://de1.api.radio-browser.info/#List_of_radio_stations
+     * https://de1.api.radio-browser.info/#Search_radio_stations_by_url
+     * https://de1.api.radio-browser.info/#Stations_by_clicks
+     * https://de1.api.radio-browser.info/#Stations_by_votes
+     * https://de1.api.radio-browser.info/#Stations_by_recent_click
+     * https://de1.api.radio-browser.info/#Stations_by_recently_changed
+     * https://de1.api.radio-browser.info/#Stations_that_got_deleted
+     * https://de1.api.radio-browser.info/#Old_versions_of_stations
+     * https://de1.api.radio-browser.info/#Stations_that_need_improvement
+     * https://de1.api.radio-browser.info/#Broken_stations
      * 
      * @param {object} filter {by: <string>, searchterm: <string>, order: <string>, reverse: <boolean>, offset: <integer>, limit: <integer>}
      * @returns {promise}
@@ -257,7 +257,7 @@ const RadioBrowser = module.exports = {
     
     /**
      * Get a list of station check results
-     * http://www.radio-browser.info/webservice#Get_a_list_of_station_check_results
+     * https://de1.api.radio-browser.info/#Get_a_list_of_station_check_results
      * 
      * @param {string} stationuuid
      * @param {number} seconds
@@ -277,7 +277,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * Advanced Search Stations
-     * http://www.radio-browser.info/webservice#Advanced_station_search
+     * https://de1.api.radio-browser.info/#Advanced_station_search
      * 
      * @param {object} params for parameters see link above
      * @returns {promise}
@@ -286,7 +286,7 @@ const RadioBrowser = module.exports = {
     
     /**
      * Vote for station
-     * http://www.radio-browser.info/webservice#Vote_for_station
+     * https://de1.api.radio-browser.info/#Vote_for_station
      * 
      * @param {number} stationuuid 
      */
@@ -294,7 +294,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * delete a station by staionuuid
-     * http://www.radio-browser.info/webservice#Delete_a_station
+     * https://de1.api.radio-browser.info/#Delete_a_station
      * 
      * @param {string} stationuuid 
      */
@@ -302,7 +302,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * undelete a station by staionid
-     * http://www.radio-browser.info/webservice#UnDelete_a_station
+     * https://de1.api.radio-browser.info/#UnDelete_a_station
      * @depracted not suported by radio-browser.info 
      * @param {number} stationuuid 
      */
@@ -310,7 +310,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * Add radio station. 
-     * http://www.radio-browser.info/webservice#Add_radio_station
+     * https://de1.api.radio-browser.info/#Add_radio_station
      * 
      * @param {object} params See link above for parameters
      */
@@ -318,7 +318,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * edit a station by stationid
-     * http://www.radio-browser.info/webservice#Edit_a_radio_station
+     * https://de1.api.radio-browser.info/#Edit_a_radio_station
      * 
      * @deprecated not suported by radio-browser.info 
      * @param {number} stationuuid See link above for parameters
@@ -328,7 +328,7 @@ const RadioBrowser = module.exports = {
 
     /**
      * Server stats
-     * http://www.radio-browser.info/webservice#Server_stats
+     * https://de1.api.radio-browser.info/#Server_stats
      */
     getServerStats: () => apiClient.request('stats'),
 
