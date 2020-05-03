@@ -276,6 +276,28 @@ const RadioBrowser = module.exports = {
     },
 
     /**
+     * List of station clicks
+     * <https://de1.api.radio-browser.info/#List_of_station_clicks>
+     * 
+     * @param {string} stationuuid
+     * @param {integer} seconds
+     */
+    getClicks: (stationuuid, seconds=0) => {
+        let route = 'clicks',
+            params = false
+
+        if (stationuuid) {
+            route += '/' + stationuuid
+        }
+        if (seconds > 0) {
+            params = {seconds: seconds}
+        }
+
+        return apiClient.request(route, params)
+    },
+
+
+    /**
      * Advanced Search Stations
      * https://de1.api.radio-browser.info/#Advanced_station_search
      * 
