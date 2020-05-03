@@ -364,6 +364,12 @@ const RadioBrowser = module.exports = {
     getServerStats: () => apiClient.request('stats'),
 
     /**
+     * Server mirrors
+     * https://de1.api.radio-browser.info/#Server_mirrors
+     */
+    getServerMirrors: () => apiClient.request('servers'),
+
+    /**
      * list of types used in getStations({by: <string>})
      * 
      * @var {array}
