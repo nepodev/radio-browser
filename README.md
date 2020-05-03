@@ -1,6 +1,6 @@
 # RadioBrowser API Client
 
-Nodejs module for [Radio-browser API](http://www.radio-browser.info/webservice)
+Nodejs module for [Radio-browser API](https://de1.api.radio-browser.info/)
 
 ## Install
 
@@ -27,24 +27,24 @@ RadioBrowser.getStations(filter)
 
 ## Methods
 
-* `addStation(<params>)` [Add radio station](http://www.radio-browser.info/webservice#Add_radio_station)
-* `deleteStation(<stationuuid>)` [Delete a station](http://www.radio-browser.info/webservice#Delete_a_station)
-* `editStation(<stationid>, <params>)` [Edit a radio station](http://www.radio-browser.info/webservice#Edit_a_radio_station)
-* `getCategory(<category>[, filter])` Get a list of [codecs](http://www.radio-browser.info/webservice#List_of_codecs), [countries](http://www.radio-browser.info/webservice#List_of_countries), [countrycodes](http://www.radio-browser.info/webservice#List_of_countrycodes), [languages](http://www.radio-browser.info/webservice#List_of_languages), [states](http://www.radio-browser.info/webservice#List_of_states), [tags](http://www.radio-browser.info/webservice#List_of_tags)
-* `getChecks([stationuuid][, seconds])` [Get a list of station check results](http://www.radio-browser.info/webservice#Get_a_list_of_station_check_results)
-* `getServerStats()` [Server stats](http://www.radio-browser.info/webservice#Server_stats)
-* `getStations([filter])` [List of radio stations](http://www.radio-browser.info/webservice#List_of_radio_stations), Stations by [clicks](http://www.radio-browser.info/webservice#Stations_by_clicks), [Url](http://www.radio-browser.info/webservice#Search_radio_stations_by_url),  [vote](http://www.radio-browser.info/webservice#Stations_by_votes), [recent click](http://www.radio-browser.info/webservice#Stations_by_recent_click), [recent changed](http://www.radio-browser.info/webservice#Stations_by_recently_changed), [deleted](http://www.radio-browser.info/webservice#Stations_that_got_deleted)
-* `searchStations([params])` [Advanced station search](http://www.radio-browser.info/webservice#Advanced_station_search)
+* `addStation(<params>)` [Add radio station](https://de1.api.radio-browser.info/#Add_radio_station)
+* ~~`deleteStation(<stationuuid>)` [Delete a station](https://de1.api.radio-browser.info/#Delete_a_station)~~
+* ~~`editStation(<stationid>, <params>)` [Edit a radio station](https://de1.api.radio-browser.info/#Edit_a_radio_station)~~
+* `getCategory(<category>[, filter])` Get a list of [codecs](https://de1.api.radio-browser.info/#List_of_codecs), [countries](https://de1.api.radio-browser.info/#List_of_countries), [countrycodes](https://de1.api.radio-browser.info/#List_of_countrycodes), [languages](https://de1.api.radio-browser.info/#List_of_languages), [states](https://de1.api.radio-browser.info/#List_of_states), [tags](https://de1.api.radio-browser.info/#List_of_tags)
+* `getChecks([stationuuid][, seconds])` [Get a list of station check results](https://de1.api.radio-browser.info/#Get_a_list_of_station_check_results)
+* `getServerStats()` [Server stats](https://de1.api.radio-browser.info/#Server_stats)
+* `getStations([filter])` [List of radio stations](https://de1.api.radio-browser.info/#List_of_radio_stations), Stations by [clicks](https://de1.api.radio-browser.info/#Stations_by_clicks), [Url](https://de1.api.radio-browser.info/#Search_radio_stations_by_url),  [vote](https://de1.api.radio-browser.info/#Stations_by_votes), [recent click](https://de1.api.radio-browser.info/#Stations_by_recent_click), [recent changed](https://de1.api.radio-browser.info/#Stations_by_recently_changed), [deleted](https://de1.api.radio-browser.info/#Stations_that_got_deleted)
+* `searchStations([params])` [Advanced station search](https://de1.api.radio-browser.info/#Advanced_station_search)
 * ~~`setService(<options>)` Set api host and base_path. Default is www.radio-browser.info~~
   Deprecated. Use Property `service_url`. i.e. `service_url = 'http://localhost'`
-* `undeleteStation(<stationid>)` [UnDelete a station](http://www.radio-browser.info/webservice#UnDelete_a_station)
-* `voteStation(<stationid>)` [Vote for station](http://www.radio-browser.info/webservice#Vote_for_station)
+* ~~`undeleteStation(<stationid>)` [UnDelete a station](https://de1.api.radio-browser.info/#UnDelete_a_station)~~
+* `voteStation(<stationuuid>)` [Vote for station](https://de1.api.radio-browser.info/#Vote_for_station)
 
 ## Properties
 
 * `filter_by_types` list of types using in getStations({by: {type}, ...})
 * `category_types` list of categories using in getCategory({type} ...)
-* `service_url` get or set the api-url. Default ist <https://www.radio-browser.info/webservice/>. Set the property to `null` to get a random API host.
+* `service_url` get or set the api-url. Default is `null` to get a random API host at first request.
 
 ## Examples:
 
@@ -55,17 +55,13 @@ Get Server Stats from a random API-Host
 
 const RadioBrowser = require('radio-browser')
 
-// Sets the property to null. 
-// At the next request an api-host will be set automatically.
-RadioBrowser.service_url = null
-
 RadioBrowser.getServerStats()
   .then(data => console.log(RadioBrowser.service_url, data))
   .catch(err => console.error(err))
 ```
 
 ```bash
-// output
+// example output
 https://de1.api.radio-browser.info/ { supported_version: 1,
   status: 'OK',
   stations: 24101,
@@ -89,4 +85,4 @@ RadioBrowser.getStations(filter)
     .catch(err => console.error(err))
 ```
 
-`data` looks like [this](http://www.radio-browser.info/webservice/json/stations/topvote/5)
+`data` looks like [this](https://de1.api.radio-browser.info/json/stations/topvote/5)
