@@ -2,10 +2,15 @@
 
 const RadioBrowser = require('..')
 
-// Sets the property to zero. 
-// At the next request an api-host will be set automatically.
-RadioBrowser.service_url = null
+const start = async () => {
+    try {
+        let data = await RadioBrowser.getServerStats()
+        console.log(`API Server: ${RadioBrowser.service_url}`)
+        console.log('stats', data)
+    }
+    catch (e) {
+        console.error(e)
+    }
+}
 
-RadioBrowser.getServerStats()
-    .then(data => console.log(RadioBrowser.service_url, data))
-    .catch(err => console.error(err))
+start()

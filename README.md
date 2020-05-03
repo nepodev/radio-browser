@@ -10,7 +10,7 @@ npm install radio-browser
 
 ## Usage
 
-Every method returns a promise so you have to use `then` and `catch`.
+Every method returns a promise so you have to use `then` and `catch` or `async` and `await`.
 
 ```js
 const RadioBrowser = require('radio-browser')
@@ -52,29 +52,40 @@ RadioBrowser.getStations(filter)
 
 ## Examples:
 
-Get Server Stats from a random API-Host
+Get Server Stats from a random API-Host by using async/await
 
 ```js
 // file: examples/server-stats.js
 
 const RadioBrowser = require('radio-browser')
 
-RadioBrowser.getServerStats()
-  .then(data => console.log(RadioBrowser.service_url, data))
-  .catch(err => console.error(err))
+const start = async () => {
+    try {
+        let data = await RadioBrowser.getServerStats()
+        console.log(`API Server: ${RadioBrowser.service_url}`)
+        console.log('stats', data)
+    }
+    catch (e) {
+        console.error(e)
+    }
+}
+
+start()
 ```
 
 ```bash
 // example output
-https://de1.api.radio-browser.info/ { supported_version: 1,
+API Server: https://de1.api.radio-browser.info/
+stats { supported_version: 1,
+  software_version: '0.6.14',
   status: 'OK',
-  stations: 24101,
-  stations_broken: 601,
-  tags: 6384,
-  clicks_last_hour: 0,
-  clicks_last_day: 5,
-  languages: 313,
-  countries: 208 }
+  stations: 25603,
+  stations_broken: 767,
+  tags: 6757,
+  clicks_last_hour: 2707,
+  clicks_last_day: 59547,
+  languages: 374,
+  countries: 246 }
 ```
 
 Get the 5 top voted station 
