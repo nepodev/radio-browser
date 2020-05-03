@@ -9,7 +9,8 @@ const PARAM_TYPES = {
     order: 'string',
     reverse: 'boolean',
     seconds: 'number',
-    url: 'string'
+    url: 'string',
+    lastchangeuuid: 'string'
 }
 
 /**
@@ -19,6 +20,7 @@ const PARAM_TYPES = {
 const ROUTE_KEYS = [
     'country',     // 1st
     'by',          // 1st
+    'stationuuid', // 1st
     'searchterm',  // 1st or 2nd
     'rowcount'     // 2nd
 ]
