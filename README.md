@@ -39,8 +39,6 @@ RadioBrowser.getStations(filter)
 * `getServerStats()` [Server stats](https://de1.api.radio-browser.info/#Server_stats)
 * `getStations([filter])` [List of radio stations](https://de1.api.radio-browser.info/#List_of_radio_stations), Stations by [clicks](https://de1.api.radio-browser.info/#Stations_by_clicks), [Url](https://de1.api.radio-browser.info/#Search_radio_stations_by_url),  [vote](https://de1.api.radio-browser.info/#Stations_by_votes), [recent click](https://de1.api.radio-browser.info/#Stations_by_recent_click), [recent changed](https://de1.api.radio-browser.info/#Stations_by_recently_changed), [deleted](https://de1.api.radio-browser.info/#Stations_that_got_deleted), [need improvements](https://de1.api.radio-browser.info/#Stations_that_need_improvements), [broken](https://de1.api.radio-browser.info/#Broken_stations)
 * `searchStations([params])` [Advanced station search](https://de1.api.radio-browser.info/#Advanced_station_search)
-* ~~`setService(<options>)` Set api host and base_path. Default is www.radio-browser.info~~
-  Deprecated. Use Property `service_url`. i.e. `service_url = 'http://localhost'`
 * ~~`undeleteStation(<stationid>)` [UnDelete a station](https://de1.api.radio-browser.info/#UnDelete_a_station)~~
 * `voteStation(<stationuuid>)` [Vote for station](https://de1.api.radio-browser.info/#Vote_for_station)
 

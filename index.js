@@ -116,26 +116,6 @@ const parseFilter = function(route, filter={})
 
 const RadioBrowser = module.exports = {
     
-    /**
-     * set service host and path
-     * @deprecated use property service_url
-     */
-    setService: (options={}) => {
-        let url
-        if (typeof options.host !== "undefined" && options.host === null) {
-            url = null
-        }
-        else {
-            url = [
-                options.protocol||'http:',
-                '//',
-                options.host||'www.radio-browser.info',
-                options.base_path||'/webservice'
-            ].join('')
-        }
-        apiClient.service_url = url
-    },
-
     get service_url() 
     {
         return apiClient.service_url
