@@ -2,8 +2,6 @@
 const { expect } = require('chai');
 const RadioBrowser = require('../index')
 
-//RadioBrowser.setService({host: 'vdeb9'})
-
 var serverStats = {}
 
 describe('#RadioBrowser.getServerStats()', function() {
@@ -65,7 +63,7 @@ describe('#RadioBrowser.addStation()', function() {
     it('should return failure message', () => {
         let params = {url: 'http://example.com'}
         return RadioBrowser.addStation(params).then((data) => {
-            expect(data).to.deep.equal({"ok":"false","message":"name is mandatory"})
+            expect(data).to.deep.equal({"ok":false,"message":"AddStationError 'name is empty'","uuid":""})
         })
     })
 })
