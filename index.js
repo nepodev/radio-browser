@@ -112,13 +112,6 @@ const parseFilter = function(route, filter={})
     }
 }
 
-/**
- * set to old api-host
- *
- * @todo remove old api requests
- */
-apiClient.service_url = 'https://www.radio-browser.info/webservice/'
-
 const RadioBrowser = module.exports = {
     
     /**
