@@ -296,6 +296,15 @@ const RadioBrowser = module.exports = {
         return apiClient.request(route, params)
     },
 
+    /**
+     * Station click counter
+     * <https://de1.api.radio-browser.info/#Count_station_click>
+     * 
+     * @param {string} stationuuid
+     */
+    clickStation: (stationuuid) => {
+        return apiClient.request('url/' + stationuuid)
+    },
 
     /**
      * Advanced Search Stations
