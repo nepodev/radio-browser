@@ -24,7 +24,6 @@ const ROUTE_KEYS = [
 ]
 
 const FILTER_BY = {
-    id: 'by',
     uuid: 'by',
     name: 'by',
     nameexact: 'by',
@@ -289,9 +288,9 @@ const RadioBrowser = module.exports = {
      * Vote for station
      * http://www.radio-browser.info/webservice#Vote_for_station
      * 
-     * @param {number} stationid 
+     * @param {number} stationuuid 
      */
-    voteStation: (stationid) => apiClient.request('vote/' + stationid),
+    voteStation: (stationuuid) => apiClient.request('vote/' + stationuuid),
 
     /**
      * delete a station by staionuuid
@@ -304,18 +303,10 @@ const RadioBrowser = module.exports = {
     /**
      * undelete a station by staionid
      * http://www.radio-browser.info/webservice#UnDelete_a_station
-     * 
-     * @param {number} stationid 
+     * @depracted not suported by radio-browser.info 
+     * @param {number} stationuuid 
      */
-    undeleteStation: (stationid) => apiClient.request('undelete/' + stationid),
-
-    /**
-     * Revert a station
-     * http://www.radio-browser.info/webservice#Revert_a_station
-     * 
-     * disabled because is broken
-     */
-    // revertStation: (stationid, changeid) => apiClient.request('revert/' + stationid + '/' + changeid),
+    undeleteStation: (stationuuid) => apiClient.request('undelete/' + stationuuid),
 
     /**
      * Add radio station. 
@@ -329,10 +320,11 @@ const RadioBrowser = module.exports = {
      * edit a station by stationid
      * http://www.radio-browser.info/webservice#Edit_a_radio_station
      * 
-     * @param {number} stationid See link above for parameters
+     * @deprecated not suported by radio-browser.info 
+     * @param {number} stationuuid See link above for parameters
      * @param {object} params
      */
-    editStation: (stationid, params) => apiClient.request('edit/' + stationid, params),
+    editStation: (stationuuid, params) => apiClient.request('edit/' + stationuuid, params),
 
     /**
      * Server stats
