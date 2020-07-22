@@ -127,6 +127,13 @@ const RadioBrowser = module.exports = {
     },
 
     /**
+     * get a radio-browser host
+     * 
+     * @returns {string}
+     */
+    getRandomHost: apiClient.getRandomHost,
+
+    /**
      * returns a list of category.
      * https://de1.api.radio-browser.info/#List_of_countries
      * https://de1.api.radio-browser.info/#List_of_countrycodes
