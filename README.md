@@ -31,7 +31,7 @@ RadioBrowser.getStations(filter)
 * `clickStation(<stationuuid>)` [Station click counter](https://de1.api.radio-browser.info/#Count_station_click)
 * `getCategory(<category>[, filter])` Get a list of [codecs](https://de1.api.radio-browser.info/#List_of_codecs), [countries](https://de1.api.radio-browser.info/#List_of_countries), [countrycodes](https://de1.api.radio-browser.info/#List_of_countrycodes), [languages](https://de1.api.radio-browser.info/#List_of_languages), [states](https://de1.api.radio-browser.info/#List_of_states), [tags](https://de1.api.radio-browser.info/#List_of_tags)
 * `getChecks([stationuuid][, seconds])` [List of station check results](https://de1.api.radio-browser.info/#List_of_station_check_results)
-* `getChecksteps(uuids)` [List of station check steps](https://de1.api.radio-browser.info/#List_of_station_check_steps)
+* `getChecksteps(<uuids>)` [List of station check steps](https://de1.api.radio-browser.info/#List_of_station_check_steps)
 * `getClicks([stationuuid][, seconds])` [List of station clicks](https://de1.api.radio-browser.info/#List_of_station_clicks)
 * `getRandomHost()` Convenience function to get a random host without api request.
 * `getServerConfig()` [Server config](https://de1.api.radio-browser.info/#Server_config)
