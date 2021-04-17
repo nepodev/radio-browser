@@ -15,7 +15,7 @@ describe('#RadioBrowser.getServerStats()', function() {
 })
 
 describe('#RadioBrowser lists', function() {
-
+    this.timeout(10000)
     it('should return all languages', () => {
         return RadioBrowser.getCategory('languages').then(data => {
             //expect(data.length).to.be.above(0)
