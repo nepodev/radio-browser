@@ -266,6 +266,19 @@ const RadioBrowser = module.exports = {
     },
 
     /**
+     * List of station check steps
+     * https://de1.api.radio-browser.info/#List_of_station_check_steps
+     * 
+     * @param {array} uuids array of station uuids
+     */
+    getChecksteps: (uuids) => {
+        let route = 'checksteps',
+            params = {uuids: uuids.join(',')}
+
+        return apiClient.request(route, params)
+    },
+
+    /**
      * List of station clicks
      * <https://de1.api.radio-browser.info/#List_of_station_clicks>
      * 
