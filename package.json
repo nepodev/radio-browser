@@ -3,6 +3,7 @@
   "version": "2.1.8",
   "description": "nodejs module for radio-browser API (http://www.radio-browser.info/webservice)",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "mocha --reporter spec"
   },
