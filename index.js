@@ -68,7 +68,7 @@ const extractParams = function(filter)
 {
     let params = {}
     Object.keys(PARAM_TYPES).forEach((name) => {
-        if (filter[name] && typeof filter[name] === PARAM_TYPES[name]) {
+        if (filter[name] && typeof filter[name] === typeof PARAM_TYPES[name]) {
             params[name] = filter[name]
         }
     })
