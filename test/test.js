@@ -24,15 +24,15 @@ describe('#RadioBrowser lists', function() {
         })
     })
 
-    it('should return countries with string "ber"', () => {
+    it('should return countries with string "de"', () => {
         let filter = {
-            searchterm: 'ber'
+            searchterm: 'de'
         }
         return RadioBrowser.getCategory('countries', filter).then(data => {
             expect(data.length).to.be.above(0)
             expect(data[0]).to.contain.keys('stationcount')
 
-            let name = data[0].name.toLowerCase()
+            let name = data[0].iso_3166_1.toLowerCase()
             expect(name).to.include(filter.searchterm)
         })
     })
